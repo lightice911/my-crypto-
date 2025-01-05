@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #ffffff;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            background: #1f2937;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #00d1b2;
+            animation: fadeIn 2s;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            color: #ffdd57;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .crypto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .crypto-card {
+            padding: 20px;
+            background: #1f2937;
+            border-radius: 8px;
+            text-align: center;
+            animation: slideIn 1.5s;
+        }
+        .crypto-card img {
+            width: 50px;
+        }
+        .chart {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1f2937;
+        }
+        footer p {
+            margin: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Crypto Portfolio Tracker</h1>
+    </header>
+
+    <section>
+        <h2>Live Cryptocurrency Tracking</h2>
+        <div class="crypto">
+            <!-- Example Crypto Cards -->
+            <div class="crypto-card" id="bitcoin">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
+                <h3>Bitcoin (BTC)</h3>
+                <p>Price: <span id="btc-price">$0.00</span></p>
+                <p>Signal: <span id="btc-signal">Hold</span></p>
+                <canvas id="btc-chart" class="chart"></canvas>
+            </div>
+
+            <div class="crypto-card" id="xrp">
+                <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" alt="XRP">
+                <h3>XRP</h3>
+                <p>Price: <span id="xrp-price">$0.00</span></p>
+                <p>Signal: <span id="xrp-signal">Hold</span></p>
+                <canvas id="xrp-chart" class="chart"></canvas>
+            </div>
+
+            <div class="crypto-card" id="pepe">
+                <img src="https://via.placeholder.com/50" alt="Pepe">
+                <h3>Pepe</h3>
+                <p>Price: <span id="pepe-price">$0.00</span></p>
+                <p>Signal: <span id="pepe-signal">Hold</span></p>
+                <canvas id="pepe-chart" class="chart"></canvas>
+            </div>
+
+            <div class="crypto-card" id="doge">
+                <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="Dogecoin">
+                <h3>Dogecoin (DOGE)</h3>
+                <p>Price: <span id="doge-price">$0.00</span></p>
+                <p>Signal: <span id="doge-signal">Hold</span></p>
+                <canvas id="doge-chart" class="chart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Crypto Portfolio | Designed by AI</p>
+    </footer>
+
+    <script>
+        // Example Chart Initialization
+        const createChart = (ctx, label) => {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: label,
+                        data: [40000, 42000, 41000, 43000, 44000, 45000],
+                        borderColor: '#00d1b2',
+                        backgroundColor: 'rgba(0, 209, 178, 0.2)',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                }
+            });
+        };
+
+        // Initialize Charts
+        createChart(document.getElementById('btc-chart').getContext('2d'), 'Bitcoin');
+        createChart(document.getElementById('xrp-chart').getContext('2d'), 'XRP');
+        createChart(document.getElementById('pepe-chart').getContext('2d'), 'Pepe');
+        createChart(document.getElementById('doge-chart').getContext('2d'), 'Dogecoin');
+    </script>
+</body>
+</html>
